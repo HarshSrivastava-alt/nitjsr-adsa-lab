@@ -4,7 +4,6 @@
 
 #define MAX 100 
 
-// Find the vertex with minimum distance value from the set of vertices not yet processed
 int minDistance(int dist[], bool visited[], int V) {
     int min = INT_MAX, min_index = -1;
 
