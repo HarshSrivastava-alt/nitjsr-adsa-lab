@@ -4,7 +4,6 @@
 
 #define MAX 100
 
-// Function to find the vertex with the minimum key value
 int minKey(int key[], bool mstSet[], int V) {
     int min = INT_MAX, min_index = -1;
 
