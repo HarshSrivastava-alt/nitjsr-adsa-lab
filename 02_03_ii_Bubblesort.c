@@ -1,4 +1,3 @@
-// Set2 Q3(ii) Bubble Sort
 
 #include<stdio.h>
 
