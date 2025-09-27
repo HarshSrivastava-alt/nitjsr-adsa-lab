@@ -1,0 +1,59 @@
+#include <stdio.h>
+#define INF 99999
+#define V 4  // Number of vertices
+
+void printSolution(int dist[][V]) {
+    printf("Shortest distances between every pair of vertices:\n");
+    for (int i = 0; i < V; i++) {
+        for (int j = 0; j < V; j++) {
+            if (dist[i][j] == INF)
+                printf("%7s", "INF");
+            else
+                printf("%7d", dist[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+void floydWarshall(int graph[][V]) {
+    int dist[V][V];
+
+    // Step 1: Initialize solution matrix with input graph
+    for (int i = 0; i < V; i++)
+        for (int j = 0; j < V; j++)
+            dist[i][j] = graph[i][j];
+
+    // Step 2: Update distances considering intermediate vertices
+    for (int k = 0; k < V; k++) {
+        for (int i = 0; i < V; i++) {
+            for (int j = 0; j < V; j++) {
+                if (dist[i][k] + dist[k][j] < dist[i][j])
+                    dist[i][j] = dist[i][k] + dist[k][j];
+            }
+        }
+    }
+
+    // Step 3: Print result
+    printSolution(dist);
+}
+
+int main() {
+    /* Example graph (4 vertices) */
+    int graph[V][V] = {
+        {0,   5,  INF, 10},
+        {INF, 0,   3,  INF},
+        {INF, INF, 0,   1},
+        {INF, INF, INF, 0}
+    };
+
+    floydWarshall(graph);
+    return 0;
+}
+
+Output::
+Shortest distances between every pair of vertices:
+      0      5      8      9
+    INF      0      3      4
+    INF    INF      0      1
+    INF    INF    INF      0
+
