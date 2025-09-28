@@ -16,7 +16,6 @@ int minKey(int key[], bool mstSet[], int V) {
     return min_index;
 }
 
-// Print the MST
 void printMST(int parent[], int graph[MAX][MAX], int V) {
     printf("Edge \tWeight\n");
     for (int i = 1; i < V; i++) {
@@ -24,19 +23,18 @@ void printMST(int parent[], int graph[MAX][MAX], int V) {
     }
 }
 
-// Prim’s MST Algorithm
 void primMST(int graph[MAX][MAX], int V) {
-    int parent[MAX];   // Stores MST
-    int key[MAX];      // Used to pick minimum weight edge
-    bool mstSet[MAX];  // true if vertex is included in MST
+    int parent[MAX];   
+    int key[MAX];      
+    bool mstSet[MAX];  
 
     for (int i = 0; i < V; i++) {
         key[i] = INT_MAX;
         mstSet[i] = false;
     } 
 
-    key[0] = 0;        // Start from vertex 0
-    parent[0] = -1;    // Root node has no parent
+    key[0] = 0;      
+    parent[0] = -1;    
 
     for (int count = 0; count < V - 1; count++) {
         int u = minKey(key, mstSet, V);
