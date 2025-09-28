@@ -10,9 +10,8 @@ int stack[MAX];
 int top = -1;
 int minCycle = MAX, maxCycle = -1;
 int V, E;
-int isDirected; // 1 for directed, 0 for undirected
+int isDirected; 
 
-// DFS with cycle detection
 void DFS(int u, int parent) {
     visited[u] = 1;
     stack[++top] = u;
@@ -22,7 +21,6 @@ void DFS(int u, int parent) {
             if (!visited[v]) {
                 DFS(v, u);
             } else {
-                // Check if v is in the stack (cycle found)
                 for (int i = 0; i <= top; i++) {
                     if (stack[i] == v) {
                         int cycleLength = top - i + 1;
@@ -51,7 +49,7 @@ int main() {
     printf("Is the graph directed? (1=Yes, 0=No): ");
     scanf("%d", &isDirected);
 
-    // Initialize graph
+  
     for (int i = 0; i < V; i++) {
         for (int j = 0; j < V; j++) {
             graph[i][j] = 0;
@@ -64,10 +62,9 @@ int main() {
         int u, v;
         scanf("%d %d", &u, &v);
         graph[u][v] = 1;
-        if (!isDirected) graph[v][u] = 1; // for undirected
+        if (!isDirected) graph[v][u] = 1; 
     }
 
-    // Run DFS from every unvisited node
     for (int i = 0; i < V; i++) {
         if (!visited[i]) {
             DFS(i, -1);
