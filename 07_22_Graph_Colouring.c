@@ -8,7 +8,7 @@ int color[MAX];        // assigned colors
 int V;                 // number of vertices
 int m;                 // number of colors
 
-// Function to check if the current color assignment is safe
+
 bool isSafe(int v, int c) {
     for (int i = 0; i < V; i++) {
         if (graph[v][i] && color[i] == c) {
